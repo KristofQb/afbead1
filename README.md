@@ -66,12 +66,12 @@ Regisztrált felhasználó
 * POST /auth/login: bejelentkező adatok küldése
 * GET /auth/signup: regisztrációs oldal
 * POST /auth/signup: regisztrációs adatok küldése
-* GET /list: tárgy listázó oldal
-* GET /delete:id : tárgy törlése
-* GET /modify:id : tágy módosító oldal
+* GET /list: névjegy listázó oldal
+* GET /delete:id : névjegy törlése
+* GET /modify:id : névjegy módosító oldal
 * POST /modify:id : modosítot adatok küldése
-* GET /add: tágy felvételi oldal
-* POST /add: felvet tárgy adatai küldése
+* GET /add: névjegy hozzáadására szolgáló oldal
+* POST /add: újonnan hozzáadott névjegy adatainak küldése
 * GET /auth/logout: login oldal
 
 ## Oldalvázlatok
@@ -95,28 +95,29 @@ Névjegyek
 Adattáblák szöveges leírása:
 
     Név: user
-    Más néven: felhasználó
-    Leírás: a felhasználóhoz tartozó adatok ebben táblában vannak
+    Leírás: a felhasználó adatai
     Attributumok:
-        - id(egész): felhasználó egyedi azonosítója
-        - surname(szöveg): a felhasználó vezetékneve
-        - forename(szöveg): a felhasználó keresztneve
-        - neptun(szöveg): a felhasználó neptun kódja
+        - id(int): felhasználó egyedi azonosítója
+        - forename(string): a felhasználó keresztneve
+        - surname(string): a felhasználó vezetékneve
+        - userId(string): a felhasználónév
     Kapcsolatok:
     
-    Név: subject
-    Más néven: tárgy, tantárgy
-    Leírás: tantárgyak adatai ebben a táblában vannak
+    Név: pbEntry
+    Leírás: a névjegy adataia
     Attributumok:
         - id(egész): tágy egyedi azonosítója
-        - targy(szöveg): a tárgy neve
-        - kredit(egész): a tárgy kredit mennyisége
-        - terem(szöveg): a tárgy teremje
-    Kapcsolatok: tantárgy kapcsolása a felhasznalóhoz
+        - prefix(string): a névjegyhez tartozó név előtag
+        - forename(string): a névjegyhez tartozó keresztnév
+        - surname(string): a névjegyhez tartozó vezetéknév
+        - suffix(string): a névjegyhez tartozó név utótag
+        - number(int): a névjegyhez tartozó telefonszám
+        - permanentaddress(string): a névjegyhez tartozó lakcím
+    Kapcsolatok: névjegy kapcsolása a felhasznalóhoz
 
 ## Állapotdiagramm
 
-Új tantárgy felvételének folyamata
+Új névjegy hozzáadása
 
 ![allapotdiagramm](docs/img/flow.png)
 
@@ -124,28 +125,29 @@ Adattáblák szöveges leírása:
 
 ## Implementáció
 
-Az alkalmazás a Cloud9 webes fejlesztői környezetben lett megírva
+Az alkalmazás a Cloud9 webes fejlesztői környezetben készült
 
 ## Könyvtárstruktúra
     
     ./docs: tartlamazza a dokumentációhoz szükséges fájlokat
-    ./models: adatmodelleket tartalmazza (user.js, subject.js)
+    ./models: adatmodelleket tartalmazza (user.js, pbEntry.js)
     ./views: a megjelenítéshez szükséges .hbs kiterjesztésü fájlok
     ./views/auth: a bejelentekzési oldalak
     ./views/partials: menü elemeinek részei
     
 ##Futtatás
 
-Az alkalmazás futtatásához a elegendo 512mb ram, 1gb merevlemez terulet meg egy dual core processzor vagy ennél jobb.
-Futtatáshoz szükségünk van egy keretrendszerre, ami ellátja az alkalmazást a megfelelő segédkönyvtárokkal. Ilyenek a Cloud9, a Heroku.
+Az alkalmazás egy 500 mb ram-mal és 1 gb tárhellyen rendelkező cloud szerveren lett megírva és tesztelve.
+Futtatáshoz szükségünk van egy keretrendszerre, ami ellátja az alkalmazást a megfelelő segédkönyvtárakkal. Ilyenek a Cloud9, a Heroku.
 
 ##Telepítés
 
-A telepítés az állományok letöltésével kezdődik. Miután kicsomagoltuk, fel kell töltenünk a keretrendszerbe. Végül az npm install parancs kiadásával a terminálban, a program feltelepíti a szükséges könyvtárakat.
+A telepítéshez le kell tölteni a megfelelő állományokat majd kicsomagolás után fel kell tölteni azokat a keretrendszerbe. A telepítést az npm install parancs kiadásával tudjuk megtenni, amit a terminálba kell beírni.
+Fontos hogy a prompt a főkönyvtárban álljon.
 
 ##A program használata
 
-A program elindításához a node index parancs kiadása szükséges, illetve ellenőriznünk kell még, hogy a program gyökérkönyvtárában áll-e a prompt. Amennyiben nem ezt módosítanunk kell. Ezután a program használatra kész.
+A programot a node index paranccsal futtathatjuk, de ajánlott ehelyett a nodemon index parancsot használni, így nem kell mindig újraindítani a szervert ha átírunk valamit a kódban.
     
     
     
