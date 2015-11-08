@@ -36,8 +36,6 @@ hozzáadhat új névjegyet, módisíthatja és törölheti a meglévőket
 
 ![Esetdiagramm](docs/img/hasznalateset.png)
 
-## Folyamatok meghatározása
-
 # Tervezés
 
 ## Oldaltérkép
