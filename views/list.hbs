@@ -1,0 +1,24 @@
+<h1>Contacts</h1>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone number</th>
+            <th>Permanent address</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data as |contact|}}
+        <tr>
+            <td>{{contact.prefix}} {{contact.forename}} {{contact.surname}} {{contact.suffix}}</td>
+            <td>{{contact.number}}</td>
+            <td>{{contact.permanentaddress}}</td>
+            <td>
+                <a href="/modify/{{contact.id}}" class = "btn btn-primary pull-right">Modify</a>
+                <a href="/delete/{{contact.id}}" class = "btn btn-primary pull-right">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

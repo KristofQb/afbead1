@@ -1,0 +1,104 @@
+{
+  "data": {
+    "pbentry": [
+      {
+        "prefix": "a1",
+        "forename": "b2",
+        "surname": "c3",
+        "suffix": "d4",
+        "number": "15",
+        "permanentaddress": "e6",
+        "user": 1,
+        "createdAt": "2015-11-08T20:04:03.171Z",
+        "updatedAt": "2015-11-08T20:05:02.514Z",
+        "id": 1
+      }
+    ],
+    "user": [
+      {
+        "forename": "John",
+        "surname": "Doe",
+        "userId": "JohnDoe",
+        "password": "$2a$10$47XvOWs.cNWDLp.AgIgj4ehx1SO5mheFYod70ouzWpOIC44bpwpt2",
+        "createdAt": "2015-11-08T20:03:29.252Z",
+        "updatedAt": "2015-11-08T20:03:29.252Z",
+        "id": 1
+      }
+    ]
+  },
+  "schema": {
+    "pbentry": {
+      "prefix": {
+        "type": "string"
+      },
+      "forename": {
+        "type": "string"
+      },
+      "surname": {
+        "type": "string"
+      },
+      "suffix": {
+        "type": "string"
+      },
+      "number": {
+        "type": "string"
+      },
+      "permanentaddress": {
+        "type": "string"
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "userId": {
+        "type": "string",
+        "unique": true
+      },
+      "password": {
+        "type": "string"
+      },
+      "forename": {
+        "type": "string"
+      },
+      "surname": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "pbentry": {
+      "id": 1
+    },
+    "user": {
+      "id": 1
+    }
+  }
+}
